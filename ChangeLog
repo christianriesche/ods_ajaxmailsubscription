@@ -1,5 +1,6 @@
 2014-11-03 Robert Heel <typo3@bobosch.de>
 	* Feature #62639: Multiple email addresses for confirmation.
+	* Feature #55478: Direct unsubscribe link.
 
 2013-03-07 Robert Heel <typo3@bobosch.de>
 	* Bug #43443: Replaced unsupported \TYPO3\CMS\Core\Utility.

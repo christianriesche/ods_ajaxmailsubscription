@@ -215,6 +215,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 						// Create link
 						$header='From: '.$this->config['mail_from']."\n".'Return-path: '.$this->config['mail_from'];
 						$marker['###LINK###']=t3lib_div::locationHeaderUrl($this->pi_getPageLink($this->config['page_edit'],'',array('L'=>$GLOBALS['TSFE']->sys_language_uid,'t'=>$user['table'],'u'=>$user['uid'],'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields']))));
+						$marker['###UNSUBSCRIBE_LINK###']=t3lib_div::locationHeaderUrl($this->pi_getPageLink($this->config['page_edit'],'',array('action'=>'delete','L'=>$GLOBALS['TSFE']->sys_language_uid,'t'=>$user['table'],'u'=>$user['uid'],'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields']))));
 
 						// Is user registered?
 						if($user[$GLOBALS['TCA'][$user['table']]['ctrl']['enablecolumns']['disabled']]){
