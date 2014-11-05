@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for extension 'ods_ajaxmailsubscription'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">Ajax mail subscription</label>
+			<label index="pi1_plus_wiz_description">Add subscription form for newsletter.</label>
+
+			<label index="updater.back">[&lt;- back]</label>
+			<label index="updater.reload">[reload this page]</label>
+			<label index="updater.warningHeader">Important! Please Read!</label>
+			<label index="updater.nothingtodo">Nothing to do</label>
+			<label index="updater.actions">Actions:</label>
+			<label index="updater.updateresults">Update results:</label>
+			<label index="updater.warningMsg">
+				The updater manipulates your database and due to the huge amount of configuration variants it is 
+				possible that it &lt;br&gt;might not produce the expected results.&lt;br&gt;
+				So backup your database (at least the tables sys_template and tt_content) or do a t3d export of your site 
+				&lt;strong&gt;BEFORE&lt;/strong&gt; &lt;br&gt;
+				you click on any of the "DO_IT" Buttons.
+			</label>
+			<label index="updater.question">Should the updater fix this settings?</label>
+			<label index="updater.questionInfo">(If you click "DO IT" the entry will be moved to the new flexform sheet)</label>
+
+			<label index="updater.MovedPidlist_label">Search "Page/Sysfolder containing tt_address records" ("page_records") in FF</label>
+			<label index="updater.MovedPidlist_message">Search for ods_ajaxmailsubscription content elements with a value for "Page/Sysfolder containing tt_address records" in flexforms (This field was moved to "Startingpoint" in tt_content):</label>
+			<label index="updater.MovedPidlist_found">Found ###COUNT### content elements.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="pi1_title">Ajax Mail Anmeldung</label>
+			<label index="pi1_plus_wiz_description">Fügt ein Anmeldeformular für Newsletter hinzu.</label>
+		</languageKey>
+	</data>
+</T3locallang>

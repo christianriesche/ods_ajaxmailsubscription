@@ -1,0 +1,36 @@
+[globalVar = LIT:jquery={$plugin.tx_odsajaxmailsubscription_pi1.JSlibrary}] && [globalVar = LIT:1={$plugin.tx_odsajaxmailsubscription_pi1.JSinclude}]
+	page.includeJSlibs.jquery = EXT:ods_ajaxmailsubscription/res/jquery/jquery-1.4.4.min.js
+[end]
+
+plugin.tx_odsajaxmailsubscription_pi1 {
+	default_group = {$plugin.tx_odsajaxmailsubscription_pi1.default_group}
+	default_type = {$plugin.tx_odsajaxmailsubscription_pi1.default_type}
+	mail_from = {$plugin.tx_odsajaxmailsubscription_pi1.mail_from}
+	mail_from_name = {$plugin.tx_odsajaxmailsubscription_pi1.mail_from_name}
+	mail_notify = {$plugin.tx_odsajaxmailsubscription_pi1.mail_notify}
+	mail_reply = {$plugin.tx_odsajaxmailsubscription_pi1.mail_reply}
+	mail_reply_name = {$plugin.tx_odsajaxmailsubscription_pi1.mail_reply_name}
+	mail_return = {$plugin.tx_odsajaxmailsubscription_pi1.mail_return}
+	page_edit = {$plugin.tx_odsajaxmailsubscription_pi1.page_edit}
+	page_redirect_unsubscribe = {$plugin.tx_odsajaxmailsubscription_pi1.page_redirect_unsubscribe}
+	show_default = {$plugin.tx_odsajaxmailsubscription_pi1.show_default}
+	template = EXT:ods_ajaxmailsubscription/pi1/ods_ajaxmailsubscription.html
+
+	page_records =
+	page_records_recursive = 0
+
+	edit.fields = gender,first_name,middle_name,last_name,birthday,title,phone,mobile,www,address,building,room,company,city,zip,region,country,fax
+	subscribe.fields = email
+	required.fields = email
+
+	authcode_fields = uid
+	default_table = tt_address
+	mail_confirmation = {$plugin.tx_odsajaxmailsubscription_pi1.mail_confirmation}
+	mail_html = {$plugin.tx_odsajaxmailsubscription_pi1.mail_html}
+
+	error.stdWrap.wrap = <p class="error">|</p>
+	info.stdWrap.wrap = <p class="info">|</p>
+
+	javascript = EXT:ods_ajaxmailsubscription/res/ods_ajaxmailsubscription.js
+	mailtemplate = EXT:ods_ajaxmailsubscription/pi1/ods_ajaxmailsubscription_mail.html
+}

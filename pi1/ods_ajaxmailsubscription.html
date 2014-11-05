@@ -1,0 +1,50 @@
+<!-- ###AJAXMAILSUBSCRIPTION### begin -->
+<!-- ###SUBSCRIBE### begin -->
+<p>###HEADER###</p>
+###MESSAGE###
+<form action="###FORM_ACTION###" enctype="multipart/form-data" method="post" onsubmit="###FORM_ONSUBMIT###">
+	<input name="###EMAIL_NAME###" onclick="if(this.value=='###EMAIL_VALUE###')this.value='';" type="text" value="###EMAIL_VALUE###" />
+	<input name="no_cache" type="hidden" value="1" />
+	<input name="###SUBMIT_NAME###" onclick="###SUBMIT_ONCLICK###" type="submit" value="###SUBMIT_VALUE###" />
+</form>
+<!-- ###SUBSCRIBE### end -->
+
+<!-- ###INFORMATION### begin -->
+<p>###HEADER###</p>
+###MESSAGE###
+<!-- ###INFORMATION### end -->
+
+<!-- ###SETTINGS### begin -->
+<p>###HEADER###</p>
+<a href="###EDIT_LINK###">###EDIT_TEXT###</a><br />
+<a href="###UNSUBSCRIBE_LINK###" onclick="###UNSUBSCRIBE_ONCLICK###">###UNSUBSCRIBE_TEXT###</a>
+<p>###PREFS_TEXT###</p>
+###MESSAGE###
+<form action="###FORM_ACTION###" enctype="multipart/form-data" method="post" onsubmit="###FORM_ONSUBMIT###">
+	<table>
+		<tr>
+			<td>###GENDER_DESC###</td>
+			<td><select name="###GENDER_NAME###" size="1">###GENDER_OPTIONS###</select></td>
+		</tr>
+		<tr>
+			<td>###TITLE_DESC###</td>
+			<td><input type="text" name="###TITLE_NAME###" value="###TITLE_VALUE###" /></td>
+		</tr>
+		<tr>
+			<td>###FIRST_NAME_DESC###</td>
+			<td><input type="text" name="###FIRST_NAME_NAME###" value="###FIRST_NAME_VALUE###" /></td>
+		</tr>
+		<tr>
+			<td>###LAST_NAME_DESC###</td>
+			<td><input type="text" name="###LAST_NAME_NAME###" value="###LAST_NAME_VALUE###" /></td>
+		</tr>
+	</table>
+	<input name="no_cache" type="hidden" value="1" />
+	<input name="###SUBMIT_NAME###" onclick="###SUBMIT_ONCLICK###" type="submit" value="###SUBMIT_VALUE###" />
+</form>
+<!-- ###SETTINGS### end -->
+
+<!-- ###INDICATION### begin -->
+<img src="typo3conf/ext/ods_ajaxmailsubscription/res/loading.gif" alt="loading..." />
+<!-- ###INDICATION### end -->
+<!-- ###AJAXMAILSUBSCRIPTION### end -->

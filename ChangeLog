@@ -1,0 +1,134 @@
+2013-03-07 Robert Heel <typo3@bobosch.de>
+	* Bug #43443: Replaced unsupported \TYPO3\CMS\Core\Utility.
+
+2013-02-09 Robert Heel <typo3@bobosch.de>
+	* Bug #43443: Replaced deprecated method readLLXMLfile (Thanks to Sebastian Steinmetz).
+	* Bug #45269: Add language to ###LINK### (Thanks to wagner).
+
+2012-10-14 Robert Heel <typo3@bobosch.de>
+	* Bug #40907: User attributes are escaped twice (Thanks to Andy).
+
+2012-08-28 Robert Heel <typo3@bobosch.de>
+	* Bug #40289: Escape strings in SQL and HTML (Thanks to Andreas Heling).
+
+2012-08-22 Robert Heel <typo3@bobosch.de>
+	* Bugfix: Always use "setBody" to add email part (Thanks to Robert Steindl).
+
+2012-07-20 Robert Heel <rheel@1drop.de>
+	* Add: TS option for required fields.
+
+2012-06-05 Robert Heel <rheel@1drop.de>
+	* Bugfix: Ignore empty email address.
+
+2012-05-25 Robert Heel <rheel@1drop.de>
+	* Bug #36899: Using t3lib_mail_message instead of t3lib_htmlmail for TYPO3 4.7 compatibility (Thanks to Loek Hilgersom).
+	* Feature #36901: Make direct_mail optional.
+
+2012-02-29 Robert Heel <rheel@1drop.de>
+	* Add: Support for fe_groups and tt_address_group.
+	* Bugfix: User registration now works if no pid is set.
+
+2011-03-22 Robert Heel <rheel@1drop.de>
+	* Add: Greek FE translation (Thanks to Lars Jochimsen).
+
+2011-02-18 Robert Heel <rheel@1drop.de>
+	* Bug #12869: Mail address name (TS option mail_from_name and mail_reply_name).
+
+2010-12-31 Robert Heel <rheel@1drop.de>
+	* Update: jQuery 1.4.4.
+
+2010-09-30 Robert Heel <rheel@1drop.de>
+	* Bugfix: Replaced forgotten %s in mail template.
+
+2010-09-08 Robert Heel <rheel@1drop.de>
+	* Incompatible Change: New (simplified) template file and extra mail template file (TS option mailtemplate).
+	* Change: Using jQuery instead of xajax.
+	* Add: TS constants.
+	* Add: HTML mail (TS option mail_html).
+	* Add: TS option mail_confirmation.
+	* Add: TS option to wrap messages (error.stdWrap and info.stdWrap).
+	* Change: Remove TS options indication and add TS option javascript instead.
+
+2010-08-25 Robert Heel <rheel@1drop.de>
+	* Bugfix: Use active user record if two records exists.
+	* Add: Set username to emailaddress and module_sys_dmail_newsletter on fe_users creation.
+	* Add: TS option indication.enable and indication.disable to use own javascript effects.
+
+2010-07-29 Robert Heel <rheel@1drop.de>
+	* Change: Move "Page/Sysfolder containing tt_address records" to "Startingpoint". Please run UPDATE! function (Thanks to Rupert Germann for tt_news update script).
+	* Add: Search sysfolder recursive.
+	* Add: Italian FE translation (Thanks to Clemens Riccabona).
+	* Add: Hook to change unsubscription marker.
+
+2010-07-14 Robert Heel <rheel@1drop.de>
+	* Bugfix: Add field middle_name to fe_users.
+	* Bugfix: Update name field on tt_address records.
+	* Bugfix: Preselection of gender (Thanks to Andreas Heling).
+
+2010-07-13 Robert Heel <rheel@1drop.de>
+	* Bugfix: No new users if default_table not set.
+	* Bugfix: TS option for authcode fields.
+
+2010-06-25 Robert Heel <rheel@1drop.de>
+	* Add: French FE translation.
+
+2010-05-28 Robert Heel <rheel@1drop.de>
+	* Add: Allow link anchor on preferences and redirect page.
+	* Add: TS option to create new addresses as fe_users.
+
+2010-05-11 Robert Heel <rheel@1drop.de>
+	* Bugfix: Disable multilanguage flexform.
+	* Bugfix: All default configuration in TS.
+
+2009-11-25 Robert Heel <rheel@1drop.de>
+	* New: Mail text on successful subscription and unsubscription.
+	* New: Redirect to page on successful unsubscription.
+	* New: Config option for reply-to.
+
+2009-11-23 Robert Heel <rheel@1drop.de>
+	* New: Default TS setup code.
+	* Bugfix: wrong fieldname on fe_users.
+	* Bugfix: Translation mistake.
+
+2009-05-04 Robert Heel <rheel@1drop.de>
+	* You can now add other optional fields in subscription
+	* Disable subscription with default mail address
+	* Remove default mail address onclick
+
+2008-12-17 Robert Heel <rheel@1drop.de>
+	* Workaround if direct_mail only substitude ###SYS_TABLE_NAME### with first letter of tablename
+	* Add mail address for notify mails
+
+2008-11-12 Robert Heel <rheel@1drop.de>
+	* Add link to edit page
+	* Add info text if authorised
+
+2008-10-30 Robert Heel <rheel@1drop.de>
+	* Add config option for return-path
+	* Use htmlmail instead of plainMailEncoded
+
+2008-10-08 Robert Heel <rheel@1drop.de>
+	* Posibility to join to more default groups
+	* Join to direct_mail categories
+	* Process join to default group after mail confirmation
+
+2008-10-07 Robert Heel <rheel@1drop.de>
+	* Bugfix: Unsubscribe with realurl
+
+2008-09-17 Robert Heel <rheel@1drop.de>
+	* Add wizard icon
+
+2008-09-15 Robert Heel <rheel@1drop.de>
+	* Bugfix: Unsubscibe not work
+
+2008-08-18 Robert Heel <rheel@1drop.de>
+	* Add documentation
+	* Use SYS_AUTHCODE instead of random id
+
+2008-08-06 Robert Heel <rheel@1drop.de>
+	* Add dependencies
+	* Now check fe_users, too
+	* Add logging (syslog)
+
+2008-06-16 Robert Heel <rheel@1drop.de>
+	* Initial release

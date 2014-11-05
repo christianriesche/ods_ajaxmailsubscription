@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ods_ajaxmailsubscription'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Ajax mail subscription</label>
+			<label index="tt_content.pi_flexform.sheet_sDEF">General</label>
+			<label index="tt_content.pi_flexform.sheet_text">Mailtext</label>
+			<label index="tt_content.pi_flexform.default_group">Add new recipient to group</label>
+			<label index="tt_content.pi_flexform.default_type">Send HTML email (default on subscription)</label>
+			<label index="tt_content.pi_flexform.mail_from">Mail from email</label>
+			<label index="tt_content.pi_flexform.mail_from_name">Mail from name</label>
+			<label index="tt_content.pi_flexform.mail_notify">Notify email to</label>
+			<label index="tt_content.pi_flexform.mail_reply">Reply-to email</label>
+			<label index="tt_content.pi_flexform.mail_reply_name">Reply-to name</label>
+			<label index="tt_content.pi_flexform.mail_return">Return-path</label>
+			<label index="tt_content.pi_flexform.mail_subscribe_subject">Successful subscription mail: Subject</label>
+			<label index="tt_content.pi_flexform.mail_subscribe_body">Successful subscription mail: Body</label>
+			<label index="tt_content.pi_flexform.mail_unsubscribe_subject">Successful unsubscription mail: Subject</label>
+			<label index="tt_content.pi_flexform.mail_unsubscribe_body">Successful unsubscription mail: Body</label>
+			<label index="tt_content.pi_flexform.page_edit">Preferences Page</label>
+			<label index="tt_content.pi_flexform.page_redirect_unsubscribe">Redirect to page after unsubscription</label>
+			<label index="tt_content.pi_flexform.show_default">Show default value</label>
+			<label index="tt_content.pi_flexform.template">Template</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.list_type_pi1">Ajax Mail Anmeldung</label>
+			<label index="tt_content.pi_flexform.sheet_sDEF">Generell</label>
+			<label index="tt_content.pi_flexform.sheet_text">Mailtexte</label>
+			<label index="tt_content.pi_flexform.default_group">Neue Empfänger zu Versandgruppe hinzufügen</label>
+			<label index="tt_content.pi_flexform.default_type">HTML Mails für neue Empfänger</label>
+			<label index="tt_content.pi_flexform.mail_from">Absender E-Mail</label>
+			<label index="tt_content.pi_flexform.mail_from_name">Absender Name</label>
+			<label index="tt_content.pi_flexform.mail_notify">Benachrichtungsmail an</label>
+			<label index="tt_content.pi_flexform.mail_reply">Antwort an E-Mail</label>
+			<label index="tt_content.pi_flexform.mail_reply_name">Antwort an Name</label>
+			<label index="tt_content.pi_flexform.mail_subscribe_subject">Erfolgreich angemeldet E-Mail: Betreff</label>
+			<label index="tt_content.pi_flexform.mail_subscribe_body">Erfolgreich angemeldet E-Mail: Text</label>
+			<label index="tt_content.pi_flexform.mail_unsubscribe_subject">Erfolgreich abgemeldet E-Mail: Betreff</label>
+			<label index="tt_content.pi_flexform.mail_unsubscribe_body">Erfolgreich abgemeldet E-Mail: Text</label>
+			<label index="tt_content.pi_flexform.page_edit">Seite zum Bearbeiten</label>
+			<label index="tt_content.pi_flexform.page_redirect_unsubscribe">Nach abmelden zu Seite umleiten</label>
+			<label index="tt_content.pi_flexform.show_default">Vorgabewerte zeigen</label>
+			<label index="tt_content.pi_flexform.template">Template</label>
+		</languageKey>
+	</data>
+</T3locallang>

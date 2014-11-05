@@ -1,0 +1,46 @@
+plugin.tx_odsajaxmailsubscription_pi1 {
+# cat=ODS Ajaxmailsubscription/General/01; type=options[jquery]; label=Use javascript library
+JSlibrary = jquery
+
+# cat=ODS Ajaxmailsubscription/General/02; type=boolean; label=Include javascript library
+JSinclude = 1
+
+# cat=ODS Ajaxmailsubscription/General/03; type=string; label=Join to these lists or groups: Typo3 database group list, e.g. "sys_dmail_group_1,sys_dmail_category_1".
+default_group =
+
+# cat=ODS Ajaxmailsubscription/General/04; type=boolean; label=HTML newsletter: Value of module_sys_dmail_html.
+default_type = 1
+
+# cat=ODS Ajaxmailsubscription/General/05; type=integer; label=Link to this page in system mails.
+page_edit = 0
+
+# cat=ODS Ajaxmailsubscription/General/06; type=integer; label=Redirect to this page after unsubscription.
+page_redirect_unsubscribe = 0
+
+# cat=ODS Ajaxmailsubscription/General/07; type=boolean; label=Show default: "John.Doe@example.com".
+show_default = 0
+
+# cat=ODS Ajaxmailsubscription/Email/08; type=boolean; label=Send confirmation mail
+mail_confirmation = 0
+
+# cat=ODS Ajaxmailsubscription/General/09; type=boolean; label=Send html mail part
+mail_html = 0
+
+# cat=ODS Ajaxmailsubscription/Email/10; type=string; label=From: Sender email address in system mails.
+mail_from = typo3@###DOMAIN###
+
+# cat=ODS Ajaxmailsubscription/Email/11; type=string; label=From: Sender name in system mails.
+mail_from_name =
+
+# cat=ODS Ajaxmailsubscription/Email/12; type=string; label=Notify (un)subscriptions to this address
+mail_notify =
+
+# cat=ODS Ajaxmailsubscription/Email/13; type=string; label=Reply-to: Reply email address.
+mail_reply =
+
+# cat=ODS Ajaxmailsubscription/Email/14; type=string; label=Reply-to: Reply name.
+mail_reply_name =
+
+# cat=ODS Ajaxmailsubscription/Email/15; type=string; label=Return-path: Bounce email address.
+mail_return = 
+}
