@@ -378,7 +378,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 		// Notify mail
 		if($this->config['mail_notify']){
 			$this->sendMail(
-				$this->config['mail_notify'],
+				array_combine(explode(',',$this->config['mail_notify']),explode(',',$this->config['mail_notify'])),
 				'mail_notify',
 				array(
 					'###EMAIL###'=>$data['email'],
