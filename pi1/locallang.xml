@@ -194,5 +194,37 @@
 		<languageKey index="es" type="array">
 			<label index="default_mail">Pedro.Perez@example.es</label>
 		</languageKey>
+		<languageKey index="he" type="array">
+			<label index="activated">הסכמתך לקבלת מידעון התקבלה</label>
+			<label index="check_mail">נשלח לך דוא&quot;ל לאישור נוסף.</label>
+			<label index="default_mail">ploni@example.com</label>
+			<label index="desc_gender">לכבוד</label>
+			<label index="desc_gender.m">מר</label>
+			<label index="desc_gender.f">גב'</label>
+			<label index="desc_title">תואר</label>
+			<label index="desc_first_name">שם פרטי</label>
+			<label index="desc_last_name">שם משפחה</label>
+			<label index="field_required">%s הוא שדה חובה.</label>
+			<label index="info_change">בקשתך לדיוור התקבלה,</label>
+			<label index="info_new">תודה.</label>
+			<label index="mail_change_body">שלום רב, לאישור סופי של הרשמתך הכנס לקישור המצ&quot;ב, הזן את פרטיך ולחץ על כפתור &quot;מסכים&quot;: %s</label>
+			<label index="mail_change_subject">שנוי הגדרות עבור %s</label>
+			<label index="mail_invalid">כתובת המייל אינה תקינה</label>
+			<label index="mail_new_body">נרשמת למידעון שלנו. כדי לאשר את המנוי, אנא לחץ|י כאן: %s</label>
+			<label index="mail_new_subject">הרשם למידעון שלנו %s</label>
+			<label index="mail_notify_create">נשלחה בקשה</label>
+			<label index="mail_notify_subscribe">מנוי</label>
+			<label index="mail_notify_unsubscribe">מנוי מבוטל</label>
+			<label index="page_edit">לביטול או שינוי הגדרות של קבלת מידעון.</label>
+			<label index="subscribe">שלח</label>
+			<label index="sure">בטוח רוצה לבטל את המנוי?</label>
+			<label index="text_prefs">עדכן פרטי מנוי שלך.</label>
+			<label index="text_subscribe">להרשמה או להסרה יש להזין את כתובת המייל שלך וללחוץ על &quot;שלח&quot; </label>
+			<label index="text_unsubscribe">השינוי אושר</label>
+			<label index="unsubscribe">ביטול מנוי</label>
+			<label index="update">שינוי מנוי</label>
+			<label index="update_success">שינוי נשמר בהצלחה</label>
+			<label index="update_fail">שינוי נכשל</label>
+		</languageKey>
 	</data>
 </T3locallang>
