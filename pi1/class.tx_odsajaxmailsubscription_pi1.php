@@ -211,8 +211,8 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 					if($user){
 						// Create link
 						$header='From: '.$this->config['mail_from']."\n".'Return-path: '.$this->config['mail_from'];
-						$marker['###LINK###']=t3lib_div::locationHeaderUrl($this->pi_getPageLink($this->config['page_edit'],'',array('L'=>$GLOBALS['TSFE']->sys_language_uid,'t'=>$user['table'],'u'=>$user['uid'],'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields']))));
-						$marker['###UNSUBSCRIBE_LINK###']=t3lib_div::locationHeaderUrl($this->pi_getPageLink($this->config['page_edit'],'',array('action'=>'delete','L'=>$GLOBALS['TSFE']->sys_language_uid,'t'=>$user['table'],'u'=>$user['uid'],'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields']))));
+						$marker['###LINK###']=t3lib_div::locationHeaderUrl($this->getPageEditLink($user));
+						$marker['###UNSUBSCRIBE_LINK###']=t3lib_div::locationHeaderUrl($this->getPageEditLink($user,true));
 
 						// Is user registered?
 						if($user[$GLOBALS['TCA'][$user['table']]['ctrl']['enablecolumns']['disabled']]){
@@ -246,6 +246,9 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			$user=$this->searchWhere(array('uid'=>$_GET['u']),$this->tables[substr($_GET['t'],0,1)]);
 			if($user){
 				if($_GET['a']==t3lib_div::stdAuthCode($user,$this->config['authcode_fields'])){
+					// User authenticated
+					$this->user=$user;
+					// Enable user if disabled
 					if($user[$GLOBALS['TCA'][$user['table']]['ctrl']['enablecolumns']['disabled']]){
 						$GLOBALS['TYPO3_DB']->exec_UPDATEquery($user['table'],'uid='.$user['uid'],array($GLOBALS['TCA'][$user['table']]['ctrl']['enablecolumns']['disabled']=>0));
 						$this->joinList($user,$this->config['default_group']);
@@ -259,12 +262,9 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 						$log['action']='subscribe';
 						$this->logging($log);
 					}
-					$GLOBALS['TSFE']->fe_user->setKey('ses','address',$user);
 				}
 			}
 		}
-
-		$this->user=$GLOBALS['TSFE']->fe_user->getKey('ses','address');
 
 		/* --------------------------------------------------
 			Preferences
@@ -299,7 +299,6 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			$log['action']='unsubscribe';
 			$this->logging($log);
 			// Delete session
-			$GLOBALS['TSFE']->fe_user->setKey('ses','address',NULL);
 			$this->user=NULL;
 		}
 	}
@@ -453,19 +452,19 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			$marker['###HEADER###']=$this->pi_getLL('text_unsubscribe');
 			$marker['###PREFS_TEXT###']=$this->pi_getLL('text_prefs');
 			// Form and submit
-			$marker['###FORM_ACTION###']=$this->pi_getPageLink($GLOBALS['TSFE']->id);
+			$marker['###FORM_ACTION###']=$this->getPageEditLink($this->user);
 			$marker['###FORM_ONSUBMIT###']='';
 			$marker['###SUBMIT_NAME###']=$this->prefixId.'[prefs]';
 			// submit should call xajax instead.
 			$marker['###SUBMIT_ONCLICK###']='return ods_ajaxmailsubscription(this);';
 			$marker['###SUBMIT_VALUE###']=$this->pi_getLL('update');
-
+			
 			// Edit
-			$marker['###EDIT_LINK###']=$this->pi_getPageLink($this->config['page_edit']);
+			$marker['###EDIT_LINK###']=$this->getPageEditLink($this->user);
 			$marker['###EDIT_TEXT###']=$this->pi_getLL('page_edit');
 
 			// Unsubscribe
-			$marker['###UNSUBSCRIBE_LINK###']=$this->pi_getPageLink($GLOBALS['TSFE']->id,'',array('action'=>'delete'));
+			$marker['###UNSUBSCRIBE_LINK###']=$this->getPageEditLink($this->user,true);
 			$marker['###UNSUBSCRIBE_ONCLICK###']="return window.confirm('".$this->pi_getLL('sure')."');";
 			$marker['###UNSUBSCRIBE_TEXT###']=$this->pi_getLL('unsubscribe');
 
@@ -571,6 +570,17 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 		$template['text']=trim($this->cObj->getSubpart($template['mailtemplate'],'###'.strtoupper($templatename).'_BODY_TEXT###'));
 		$template['html']=trim($this->cObj->getSubpart($template['mailtemplate'],'###'.strtoupper($templatename).'_BODY_HTML###'));
 		return($template);
+	}
+	
+	function getPageEditLink($user,$delete=false){
+		$params=array(
+			'L'=>$GLOBALS['TSFE']->sys_language_uid,
+			't'=>$user['table'],
+			'u'=>$user['uid'],
+			'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields'])
+		);
+		if($delete) $params['action']='delete';
+		return $this->pi_getPageLink($this->config['page_edit'],'',$params);
 	}
 }
 
