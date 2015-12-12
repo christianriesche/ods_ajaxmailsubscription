@@ -69,7 +69,7 @@
 			<label index="activated">Din tilmelding er aktiveret.</label>
 			<label index="text_unsubscribe">Du er logget ind.</label>
 			<label index="check_mail">En mail til bekræftelse er sendt til dig.</label>
-			<label index="default_mail">navn@domæne.dk</label>
+			<label index="default_mail">Morten.Menigmand@eksempel.dk</label>
 			<label index="desc_gender">Køn</label>
 			<label index="desc_gender.m">Mand</label>
 			<label index="desc_gender.f">Kvinde</label>
@@ -93,7 +93,7 @@
 		<languageKey index="el" type="array">
 			<label index="activated">Η συνδρομή σας έχει ενεργοποιηθεί.</label>
 			<label index="check_mail">Σας έχει αποσταλεί e-mail επιβεβαίωσης.</label>
-			<label index="default_mail">John.Doe@example.com</label>
+			<label index="default_mail">John.Doe@example.gr</label>
 			<label index="desc_gender">Προσφώνηση</label>
 			<label index="desc_gender.m">Κος</label>
 			<label index="desc_gender.f">Κα</label>
@@ -121,7 +121,7 @@
 			<label index="activated">Uw nieuwsbrief aanmelding is geactiveerd.</label>
 			<label index="authorised">Uw email adres is bevestigd.</label>
 			<label index="check_mail">Een bevestigings email is verzonden naar uw email adres.</label>
-			<label index="default_mail">Uw.Email@voorbeeld.nl</label>
+			<label index="default_mail">Jan.Modaal@voorbeeld.nl</label>
 			<label index="desc_gender">Aanhef</label>
 			<label index="desc_gender.m">Dhr.</label>
 			<label index="desc_gender.f">Mevr.</label>
@@ -199,7 +199,7 @@
 		<languageKey index="he" type="array">
 			<label index="activated">הסכמתך לקבלת מידעון התקבלה</label>
 			<label index="check_mail">נשלח לך דוא&quot;ל לאישור נוסף.</label>
-			<label index="default_mail">ploni@example.com</label>
+			<label index="default_mail">ploni@example.is</label>
 			<label index="desc_gender">לכבוד</label>
 			<label index="desc_gender.m">מר</label>
 			<label index="desc_gender.f">גב'</label>

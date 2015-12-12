@@ -1,4 +1,5 @@
 2015-12-12 Robert Heel <typo3@bobosch.de>
+	* Change: John.Doe@example.com translation.
 	* Security fix: Expiration of authorisation links (TS option authcode_expiration_time = 60 minutes).
 
 2015-11-20 Robert Heel <typo3@bobosch.de>
