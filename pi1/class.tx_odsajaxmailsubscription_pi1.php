@@ -210,9 +210,10 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 
 					if($user){
 						// Create link
-						$header='From: '.$this->config['mail_from']."\n".'Return-path: '.$this->config['mail_from'];
-						$marker['###LINK###']=t3lib_div::locationHeaderUrl($this->getPageEditLink($user));
-						$marker['###UNSUBSCRIBE_LINK###']=t3lib_div::locationHeaderUrl($this->getPageEditLink($user,true));
+						$marker=array(
+							'###LINK###'=>t3lib_div::locationHeaderUrl($this->getPageEditLink($user)),
+							'###UNSUBSCRIBE_LINK###'=>t3lib_div::locationHeaderUrl($this->getPageEditLink($user,true)),
+						);
 
 						// Is user registered?
 						if($user[$GLOBALS['TCA'][$user['table']]['ctrl']['enablecolumns']['disabled']]){
@@ -245,7 +246,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 		if($_GET['t'] && array_key_exists(substr($_GET['t'],0,1),$this->tables) && $_GET['u'] && $_GET['a']){
 			$user=$this->searchWhere(array('uid'=>$_GET['u']),$this->tables[substr($_GET['t'],0,1)]);
 			if($user){
-				if($_GET['a']==t3lib_div::stdAuthCode($user,$this->config['authcode_fields'])){
+				if($this->checkAuthorisation($user,$_GET['a'])){
 					// User authenticated
 					$this->user=$user;
 					// Enable user if disabled
@@ -573,14 +574,52 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 	}
 	
 	function getPageEditLink($user,$delete=false){
+		$timecode=str_pad(dechex(time()), 8, '0', STR_PAD_LEFT);
 		$params=array(
 			'L'=>$GLOBALS['TSFE']->sys_language_uid,
 			't'=>$user['table'],
 			'u'=>$user['uid'],
-			'a'=>t3lib_div::stdAuthCode($user,$this->config['authcode_fields'])
+			'a'=>$timecode . $this->getAuthorisation($user,$timecode)
 		);
 		if($delete) $params['action']='delete';
 		return $this->pi_getPageLink($this->config['page_edit'],'',$params);
+	}
+	
+	function checkAuthorisation($user, $a) {
+		// Check code format
+		// Code must be 16 hex characters
+		$ok = preg_match('/^[0-9a-f]{16}$/', $a);
+		if($ok) {
+			// Check authorisation code
+			// Timecode + Authcode hash must match
+			$timecode = substr($a,0,8);
+			$authcode = substr($a,8);
+			if($authcode == $this->getAuthorisation($user,$timecode)) {
+				// Check expiration time
+				// time difference has to be less then expiration time
+				if($this->conf['authcode_expiration_time'] == 0 || time() - hexdec($timecode) <= $this->conf['authcode_expiration_time'] * 60) {
+					return true;
+				} else {
+					// Inform user
+					$this->info = $this->pi_getLL('info_change');
+					// Send email
+					$marker=array(
+						'###LINK###' => t3lib_div::locationHeaderUrl($this->getPageEditLink($user)),
+						'###UNSUBSCRIBE_LINK###' => t3lib_div::locationHeaderUrl($this->getPageEditLink($user, true)),
+					);
+					$this->sendMail($user['email'],'mail_change', $marker);
+					// Notify user
+					$this->info = $this->pi_getLL('link_expired');
+					$this->info .= '<br />' . $this->pi_getLL('check_mail');
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	function getAuthorisation($user,$timecode) {
+		return substr(md5($timecode . t3lib_div::stdAuthCode($user,$this->config['authcode_fields'], 32)), 0, 8);
 	}
 }
 

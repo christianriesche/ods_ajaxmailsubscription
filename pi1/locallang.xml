@@ -19,6 +19,7 @@
 			<label index="field_required">%s is required.</label>
 			<label index="info_change">You are already registered.</label>
 			<label index="info_new">Thank you.</label>
+			<label index="link_expired">This link is expired. A new link was sent to you.</label>
 			<label index="mail_invalid">This is not a valid e-mail address</label>
 			<label index="mail_notify_create">requested</label>
 			<label index="mail_notify_subscribe">subscribed</label>
@@ -48,6 +49,7 @@
 			<label index="field_required">%s ist ein Pflichtfeld.</label>
 			<label index="info_change">Sie sind bereits angemeldet.</label>
 			<label index="info_new">Vielen Dank für Ihr Interesse.</label>
+			<label index="link_expired">Der Link ist abgelaufen. Ein neuer Link wurde Ihnen zugesandt.</label>
 			<label index="mail_invalid">Dies ist keine gültige E-Mail-Adresse</label>
 			<label index="mail_notify_create">angefragt</label>
 			<label index="mail_notify_subscribe">abonniert</label>
