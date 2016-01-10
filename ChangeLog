@@ -1,4 +1,7 @@
-2015-01-07 Robert Heel <typo3@bobosch.de>
+2016-01-07 Robert Heel <typo3@bobosch.de>
+	* Security fix: Hash the one time code.
+
+2016-01-07 Robert Heel <typo3@bobosch.de>
 	* Security fix: one time authorisation links.
 	* Update: documentation.
 
