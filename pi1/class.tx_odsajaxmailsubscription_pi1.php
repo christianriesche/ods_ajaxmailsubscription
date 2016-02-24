@@ -238,7 +238,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			Confirmation (rid)
 		-------------------------------------------------- */
 		if($_GET['t'] && array_key_exists(substr($_GET['t'],0,1),$this->tables) && $_GET['u'] && $_GET['a']){
-			$user=$this->searchWhere(array('uid'=>$_GET['u']),$this->tables[substr($_GET['t'],0,1)]);
+			$user=$this->searchWhere(array('uid'=>intval($_GET['u'])),$this->tables[substr($_GET['t'],0,1)]);
 			if($user){
 				if($this->checkAuthorisation($user,$_GET['a'])){
 					// User authenticated
