@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008 Robert Heel <rheel@1drop.de>
+*  (c) 2008 Robert Heel <typo3@bobosch.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -29,7 +29,7 @@
  * @package	TYPO3
  * @subpackage	tx_odsajaxmailsubscription
  */
-class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
+class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 	var $prefixId      = 'tx_odsajaxmailsubscription_pi1';		// Same as class name
 	var $scriptRelPath = 'pi1/class.tx_odsajaxmailsubscription_pi1.php';	// Path to this script relative to the extension dir.
 	var $extKey        = 'ods_ajaxmailsubscription';	// The extension key.
@@ -74,7 +74,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 		$this->hooks=array();
 		if(is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey][$this->scriptRelPath])){
 			foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey][$this->scriptRelPath] as $classRef){
-				$this->hooks[]=&t3lib_div::getUserObj($classRef);
+				$this->hooks[]=&\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($classRef);
 			}
 		}
 
@@ -83,7 +83,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			- FlexForm
 			- TypoScript
 		-------------------------------------------------- */
-		$conf['use_mailer']=t3lib_extMgm::isLoaded('direct_mail') ? 'direct_mail' : '';
+		$conf['use_mailer']=\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('direct_mail') ? 'direct_mail' : '';
 
 		$flex=array();
 		$options=array(
@@ -135,7 +135,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 	function main($content,$conf)	{
 		$this->init($conf);
 
-		$this->mail=t3lib_div::makeInstance('t3lib_mail_Message');
+		$this->mail=\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Mail\MailMessage');
 		if($this->config['mail_from']) $this->mail->setFrom(array($this->config['mail_from'] => $this->config['mail_from_name']));
 		if($this->config['mail_reply']) $this->mail->setReplyTo(array($this->config['mail_reply'] => $this->config['mail_reply_name']));
 		if($this->config['mail_return']) $this->mail->setReturnPath($this->config['mail_return']);
@@ -182,7 +182,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			$this->error=$this->checkRequiredFields(explode(',',$this->config['required.']['fields']),$this->piVars);
 			if(!$this->error){
 				$email=trim($this->piVars['email']);
-				if(t3lib_div::validEmail($email) && $email!=$this->pi_getLL('default_mail')){
+				if(\TYPO3\CMS\Core\Utility\GeneralUtility::validEmail($email) && $email!=$this->pi_getLL('default_mail')){
 					// Search address
 					$user=$this->searchAddress(array('email'=>$email));
 					if(!$user && $this->config['default_table']){
@@ -287,7 +287,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 			}
 			// Redirect
 			if($this->config['page_redirect_unsubscribe']){
-				header('Location: '.t3lib_div::locationHeaderUrl($this->pi_getPageLink($this->config['page_redirect_unsubscribe'])));
+				header('Location: '.\TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($this->pi_getPageLink($this->config['page_redirect_unsubscribe'])));
 			}
 			// log
 			$log=$this->user;
@@ -349,7 +349,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 	function splitGroup($group){
 		$groups=explode(',',$group);
 		foreach($groups as $group){
-			$item=t3lib_div::revExplode('_',$group,2);
+			$item=\TYPO3\CMS\Core\Utility\GeneralUtility::revExplode('_',$group,2);
 			$ret[$item[0]][]=$item[1];
 		}
 		return($ret);
@@ -359,10 +359,10 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 		// Syslog entry
 		$insert=array(
 			'tablename'=>$data['table'],
-//			'details'=>t3lib_div::arrayToLogString($data),
+//			'details'=>\TYPO3\CMS\Core\Utility\GeneralUtility::arrayToLogString($data),
 			'details'=>'%s address %s (table: %s, uid: %s, list %s)',
 			'tstamp'=>time(),
-			'IP'=>t3lib_div::getIndpEnv('REMOTE_ADDR'),
+			'IP'=>\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('REMOTE_ADDR'),
 			'log_data'=>serialize(array($data['action'],$data['email'],$data['table'],$data['uid'],$this->config['default_group'])),
 			'event_pid'=>0,
 		);
@@ -540,8 +540,8 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 
 	function sendUserMail(&$user, $template) {
 		$marker=array(
-			'###LINK###' => t3lib_div::locationHeaderUrl($this->getPageEditLink($user)),
-			'###UNSUBSCRIBE_LINK###' => t3lib_div::locationHeaderUrl($this->getPageEditLink($user, true)),
+			'###LINK###' => \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($this->getPageEditLink($user)),
+			'###UNSUBSCRIBE_LINK###' => \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($this->getPageEditLink($user, true)),
 		);
 		$this->sendMail($user['email'], $template, $marker);
 	}
@@ -549,7 +549,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 	function sendMail($recipient,$templatename,$marker=array()){
 		$template=$this->getMailTemplate($templatename);
 
-		$marker['###SERVER###']=t3lib_div::getIndpEnv('HTTP_HOST');
+		$marker['###SERVER###'] = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('HTTP_HOST');
 
 		$this->mail->setTo($recipient);
 		$this->mail->setSubject(strtr($template['subject'],$marker));
@@ -639,7 +639,7 @@ class tx_odsajaxmailsubscription_pi1 extends tslib_pibase {
 	}
 
 	function getAuthorisationCode($user) {
- 		return t3lib_div::stdAuthCode($user,$this->config['authcode_fields']);
+ 		return \TYPO3\CMS\Core\Utility\GeneralUtility::stdAuthCode($user,$this->config['authcode_fields']);
 	}
 
 	function getAuthorisationRid(&$user) {

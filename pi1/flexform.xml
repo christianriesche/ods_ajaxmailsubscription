@@ -17,7 +17,6 @@
 								<type>group</type>
 								<internal_type>db</internal_type>
 								<allowed>sys_dmail_category,sys_dmail_group,fe_groups,tt_address_group</allowed>
-								<maxitems>-1</maxitems>
 								<size>3</size>
 								<show_thumbs>1</show_thumbs>
 							</config>
@@ -99,7 +98,13 @@
 										<type>popup</type>
 										<title>Link</title>
 										<icon>link_popup.gif</icon>
-										<script>browse_links.php?mode=wizard</script>
+										<module type="array">
+										<name>wizard_element_browser</name>
+											<urlParameters type="array">
+												<mode>wizard</mode>
+												<act>file</act>
+											</urlParameters>
+										</module>
 										<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
 									</link>
 								</wizards>
@@ -120,7 +125,13 @@
 										<type>popup</type>
 										<title>Link</title>
 										<icon>link_popup.gif</icon>
-										<script>browse_links.php?mode=wizard</script>
+										<module type="array">
+											<name>wizard_element_browser</name>
+											<urlParameters type="array">
+												<mode>wizard</mode>
+												<act>file</act>
+											</urlParameters>
+										</module>
 										<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
 									</link>
 								</wizards>

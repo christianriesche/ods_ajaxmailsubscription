@@ -26,7 +26,7 @@ class ext_update {
 	protected $messageArray = array();
 
 	public function access() {
-		return t3lib_div::compat_version('6.0');
+		return \TYPO3\CMS\Core\Utility\GeneralUtility::compat_version('6.0');
 	}
 
 	/**
@@ -47,11 +47,12 @@ class ext_update {
 	protected function generateOutput() {
 		$output = '';
 		foreach ($this->messageArray as $messageItem) {
-			$flashMessage = t3lib_div::makeInstance(
-					't3lib_FlashMessage',
-					$messageItem[2],
-					$messageItem[1],
-					$messageItem[0]);
+			$flashMessage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+				'TYPO3\CMS\Core\Messaging\FlashMessage',
+				$messageItem[2],
+				$messageItem[1],
+				$messageItem[0]
+			);
 			$output .= $flashMessage->render();
 		}
 
@@ -86,15 +87,15 @@ class ext_update {
 
 		if ($currentTableFields[$field]) {
 			$message = 'Field ' . $table . ':' . $field . ' already exists.';
-			$status = t3lib_FlashMessage::OK;
+			$status = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
 		} else {
 			$sql = 'ALTER TABLE ' . $table . ' ADD ' . $field . ' ' . $options;
 			if ($GLOBALS['TYPO3_DB']->admin_query($sql) === FALSE) {
 				$message = ' SQL ERROR: ' .  $GLOBALS['TYPO3_DB']->sql_error();
-				$status = t3lib_FlashMessage::ERROR;
+				$status = \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR;
 			} else {
 				$message = 'OK!';
-				$status = t3lib_FlashMessage::OK;
+				$status = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
 			}
 		}
 
@@ -104,7 +105,7 @@ class ext_update {
 	
 	protected function moveFieldFFtoTable($FFsheet,$FFfield,$DBtable,$DBfield) {
 		$title = 'Move data from flexform sheet "' . $FFsheet . '", field "' . $FFfield . '" to table "' . $DBtable . '", field "' . $DBfield . '"';
-		$status = t3lib_FlashMessage::OK;
+		$status = \TYPO3\CMS\Core\Messaging\FlashMessage::OK;
 	
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'*',
@@ -113,10 +114,10 @@ class ext_update {
 		);
 
 		if ($res) {
-			$flexObj = t3lib_div::makeInstance('t3lib_flexformtools');
+			$flexObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools');
 		
 			while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
-				$xmlArr = t3lib_div::xml2array($row['pi_flexform']);
+				$xmlArr = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($row['pi_flexform']);
 				$oldVal = $this->pi_getFFvalue($xmlArr, $FFfield, $FFsheet);
 				if ($oldVal) {
 					$message = 'Moved value "' . $oldVal . '" on content id "' . $row['uid'] . '"' . "\n";
@@ -132,7 +133,7 @@ class ext_update {
 						$fields_values
 					);
 					if (!$UPDATEres) {
-						$status = t3lib_FlashMessage::ERROR;
+						$status = \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR;
 					}
 					
 				}
@@ -167,7 +168,6 @@ class ext_update {
 					$c = 0;
 					foreach ($tempArr as $values) {
 						if ($c == $v) {
-							#debug($values);
 							$tempArr = $values;
 							break;
 						}

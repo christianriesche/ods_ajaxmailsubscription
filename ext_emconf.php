@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'title' => 'Ajax mail subscription',
 	'description' => 'Adds a plugin for subscription to direct mail newsletters',
 	'category' => 'plugin',
-	'version' => '1.5.0',
+	'version' => '1.6.0',
 	'state' => 'stable',
 	'uploadfolder' => true,
 	'createDirs' => '',
@@ -26,7 +26,7 @@ $EM_CONF[$_EXTKEY] = array (
 	array (
 		'depends' => 
 		array (
-			'typo3' => '4.6.0-6.2.99',
+			'typo3' => '6.0.0-7.99.99',
 			'tt_address' => '',
 		),
 		'conflicts' => 

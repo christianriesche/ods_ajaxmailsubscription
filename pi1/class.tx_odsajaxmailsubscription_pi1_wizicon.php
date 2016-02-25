@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008  <rheel@1drop.de>
+*  (c) 2008 Robert Heel <typo3@bobosch.de>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -22,58 +22,39 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-
-
-
 /**
  * Class that adds the wizard icon.
  *
- * @author	 <rheel@1drop.de>
+ * @author	Robert Heel <typo3@bobosch.de>
  * @package	TYPO3
  * @subpackage	tx_odsajaxmailsubscription
  */
 class tx_odsajaxmailsubscription_pi1_wizicon {
+	/**
+	 * Path to locallang file (with : as postfix)
+	 *
+	 * @var string
+	 */
+	protected $locallangPath = 'LLL:EXT:ods_ajaxmailsubscription/locallang.xml:';
 
 	/**
-		* Processing the wizard items array
-		*
-		* @param	array		$wizardItems: The wizard items
-		* @return	Modified array with wizard items
-		*/
-	function proc($wizardItems)	{
-		global $LANG;
-
-		$LL = $this->includeLocalLang();
-
+	 * Processing the wizard items array
+	 *
+	 * @param array $wizardItems
+	 * @return array
+	 */
+	public function proc($wizardItems = array()) {
 		$wizardItems['plugins_tx_odsajaxmailsubscription_pi1'] = array(
-			'icon'=>t3lib_extMgm::extRelPath('ods_ajaxmailsubscription').'pi1/ce_wiz.gif',
-			'title'=>$LANG->getLLL('pi1_title',$LL),
-			'description'=>$LANG->getLLL('pi1_plus_wiz_description',$LL),
-			'params'=>'&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=ods_ajaxmailsubscription_pi1'
+			'icon' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ods_ajaxmailsubscription') . 'pi1/ce_wiz.gif',
+			'title' => $GLOBALS['LANG']->sL($this->locallangPath . 'pi1_title'),
+			'description' => $GLOBALS['LANG']->sL($this->locallangPath . 'pi1_plus_wiz_description'),
+			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=ods_ajaxmailsubscription_pi1',
+			'tt_content_defValues' => array(
+				'CType' => 'list',
+			),
 		);
 
 		return $wizardItems;
 	}
-
-	/**
-		* Reads the [extDir]/locallang.xml and returns the $LOCAL_LANG array found in that file.
-		*
-		* @return	The array with language labels
-		*/
-	function includeLocalLang()	{
-		$llFile = t3lib_extMgm::extPath('ods_ajaxmailsubscription').'locallang.xml';
-// 		$LOCAL_LANG = t3lib_l10n_parser_Llxml::getParsedData($llFile, $GLOBALS['LANG']->lang);
-		$object = t3lib_div::makeInstance('t3lib_l10n_parser_Llxml');
-		$LOCAL_LANG =  $object->getParsedData($llFile, $GLOBALS['LANG']->lang);
-
-		return $LOCAL_LANG;
-	}
 }
-
-
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ods_ajaxmailsubscription/pi1/class.tx_odsajaxmailsubscription_pi1_wizicon.php'])	{
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ods_ajaxmailsubscription/pi1/class.tx_odsajaxmailsubscription_pi1_wizicon.php']);
-}
-
 ?>
