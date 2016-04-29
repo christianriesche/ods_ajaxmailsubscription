@@ -55,10 +55,11 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 			'MM'=>'sys_dmail_group_mm',
 			'user_local'=>false,
 		),
-		'tt_address_group'=>array(
-			'MM'=>'tt_address_group_mm',
+		'sys_category'=>array(
+			'MM'=>'sys_category_record_mm',
+			'fieldname'=>'categories',
 			'table'=>'tt_address',
-			'user_local'=>true,
+			'user_local'=>false,
 		),
 	);
 
@@ -315,7 +316,12 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 								'uid_foreign'=>$user['uid'],
 							);
 						}
-						if(!isset($this->tables_mm[$list]['table'])) $insert['tablenames']=$user['table'];
+						if(isset($this->tables_mm[$list]['table'])) {
+							$insert['tablenames']=$this->tables_mm[$list]['table'];
+						} else {
+							$insert['tablenames']=$user['table'];
+						}
+						if(isset($this->tables_mm[$list]['fieldname'])) $insert['fieldname']=$this->tables_mm[$list]['fieldname'];
 						$res=$GLOBALS['TYPO3_DB']->exec_INSERTquery($this->tables_mm[$list]['MM'],$insert);
 					}
 				}elseif(isset($this->tables_mm[$list]['field'])){
