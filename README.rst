@@ -87,6 +87,12 @@ Administration
 
 	<a href="http://[your domain name]/index.php?id=[id to page of this plugin]&u=###USER_uid###&t=###SYS_TABLE_NAME###&a=###SYS_AUTHCODE###">unsubscribe</a>
 
+- If the unscubscription should be done immediately, set authcode_std = del in TS and use this link:
+
+::
+
+	<a href="http://[your domain name]/index.php?id=[id to page of this plugin]&u=###USER_uid###&t=###SYS_TABLE_NAME###&a=###SYS_AUTHCODE###&do=del">unsubscribe</a>
+
 - Unsubscribe user
   - A tt_address record won't be deleted, instead it will set to hidden (“hidden=1”). This user won't receive mails any more. If you import mail addresses using the direct_mail CSV import, the user remains unsubscribed if “Update existing user, instead renaming the new user” is set.
 
@@ -178,6 +184,9 @@ Reference
 |                 | list      | template.                           |         |
 +-----------------+-----------+-------------------------------------+---------+
 | authcode_fields | string    | Fields used to generate authcode.   | uid     |
++-----------------+-----------+-------------------------------------+---------+
+| authcode_std    | string    | Standard authcode does not expire   |         |
+|                 |           | for specific actions: del           |         |
 +-----------------+-----------+-------------------------------------+---------+
 | |aet|           | integer   | Expiration time of authorized links | 60      |
 |                 |           | in email. 0 disables expiration.    |         |

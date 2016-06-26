@@ -25,6 +25,7 @@ plugin.tx_odsajaxmailsubscription_pi1 {
 
 	authcode_fields = uid
 	authcode_expiration_time = 60
+	authcode_std =
 	default_table = tt_address
 	mail_confirmation = {$plugin.tx_odsajaxmailsubscription_pi1.mail_confirmation}
 	mail_html = {$plugin.tx_odsajaxmailsubscription_pi1.mail_html}

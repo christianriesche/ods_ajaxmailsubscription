@@ -1,5 +1,7 @@
 2016-06-26 Robert Heel <typo3@bobosch.de>
 	* Change: REST Documentation.
+	* Bugfix: Check if old 8 characters authcode is valid.
+	* Add: Posibility to unsubscribe immediately with 8 characters authcode.
 
 2016-04-29 Robert Heel <typo3@bobosch.de>
 	* Bug #75944: Use sys_category instead of tt_address_group.

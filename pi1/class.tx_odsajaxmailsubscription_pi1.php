@@ -278,7 +278,7 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 		/* --------------------------------------------------
 			Unsubscribe
 		-------------------------------------------------- */
-		if($_GET['action']=='delete' && $this->user){
+		if($_GET['do']=='del' && $this->user){
 			// Unsubscribe user
 			$this->leaveList($this->user);
 			$GLOBALS['TYPO3_DB']->exec_UPDATEquery($this->user['table'],'uid='.$this->user['uid'],array($GLOBALS['TCA'][$this->user['table']]['ctrl']['enablecolumns']['disabled']=>1));
@@ -588,7 +588,7 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 			'u'=>$user['uid'],
 			'a'=>$this->getAuthorisation($user)
 		);
-		if($delete) $params['action']='delete';
+		if($delete) $params['do']='del';
 		return $this->pi_getPageLink($this->config['page_edit'],'',$params);
 	}
 	
@@ -624,7 +624,11 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 		// Code must be 8 hex characters
 		} elseif(preg_match('/^[0-9a-f]{8}$/', $a)) {
 			if($a == $this->getAuthorisationCode($user)) {
-				$expired = true;
+				if(!empty($this->conf['authcode_std']) && $this->conf['authcode_std'] == $_GET['do']) {
+					return true;
+				} else {
+					$expired = true;
+				}
 			}
 		}
 
