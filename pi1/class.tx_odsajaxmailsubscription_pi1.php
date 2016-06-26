@@ -623,7 +623,7 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 		// Authcode from direct_mail unsubcription link
 		// Code must be 8 hex characters
 		} elseif(preg_match('/^[0-9a-f]{8}$/', $a)) {
-			if($this->getAuthorisationCode($user)) {
+			if($a == $this->getAuthorisationCode($user)) {
 				$expired = true;
 			}
 		}
