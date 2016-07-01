@@ -9,6 +9,7 @@
 			<label index="activated">Your newsletter subscription has been activated.</label>
 			<label index="check_mail">A confirmation e-mail was sent to you.</label>
 			<label index="default_mail">John.Doe@example.com</label>
+			<label index="deleted">Your newsletter subscription has been deactivated.</label>
 			<label index="desc_email">Email</label>
 			<label index="desc_gender">Salutation</label>
 			<label index="desc_gender.m">Mr</label>
@@ -39,6 +40,7 @@
 			<label index="activated">Ihre E-Mail-Adresse wurde erfolgreich aufgenommen.</label>
 			<label index="check_mail">Eine Bestätigungs-E-Mail wurde Ihnen zugesandt.</label>
 			<label index="default_mail">Max.Mustermann@beispiel.de</label>
+			<label index="deleted">Sie wurden vom Newsletter abgemeldet.</label>
 			<label index="desc_email">E-Mail</label>
 			<label index="desc_gender">Anrede</label>
 			<label index="desc_gender.m">Herr</label>

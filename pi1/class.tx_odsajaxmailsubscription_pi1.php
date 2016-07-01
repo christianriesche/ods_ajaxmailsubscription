@@ -289,6 +289,8 @@ class tx_odsajaxmailsubscription_pi1 extends \TYPO3\CMS\Frontend\Plugin\Abstract
 			// Redirect
 			if($this->config['page_redirect_unsubscribe']){
 				header('Location: '.\TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($this->pi_getPageLink($this->config['page_redirect_unsubscribe'])));
+			} else {
+				$this->info = $this->pi_getLL('deleted');
 			}
 			// log
 			$log=$this->user;
