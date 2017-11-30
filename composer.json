@@ -1,0 +1,16 @@
+{
+    "name": "bobosch/ods_ajaxmailsubscription",
+    "description": "Allows users to rate the current visited page as useful or not useful and give feedback.",
+    "version": "2.0.0",
+    "type": "typo3-cms-extension",
+    "homepage": "http://www.dmk-ebusiness.de/",
+    "license": "GPL-2.0+",
+    "require": {
+        "typo3/cms": "~6.2 || ~7.6 || ~8.7"
+    },
+	"autoload" : {
+		"classmap" : [
+			"pi1"
+		]
+	}	
+}
